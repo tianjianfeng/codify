@@ -15,7 +15,7 @@ object Solution {
     var i = 1
     loop.breakable {
       for (a <- A) {
-        if (!A.contains(i))
+        if (A.indexOf(i) == -1)
           loop.break;
         i += 1
       }
