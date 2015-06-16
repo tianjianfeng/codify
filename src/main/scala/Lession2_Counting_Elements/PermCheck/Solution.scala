@@ -13,7 +13,7 @@ object Solution {
     var r = 1
     loop.breakable {
       for (a <- A) {
-        if (a > size) {
+        if (a > size || (A.indexOf(a, A.indexOf(a)+ 1) != -1)) {
           r = 0
           loop.break()
         }
