@@ -11,12 +11,14 @@ object Solution {
     val loop = new Breaks
     val size = A.length
     var r = 1
+    var i = 0
     loop.breakable {
       for (a <- A) {
-        if (a > size || (A.indexOf(a, A.indexOf(a)+ 1) != -1)) {
+        if (a > size || (A.indexOf(a, i+ 1) != -1)) {
           r = 0
           loop.break()
         }
+        i += 1
       }
     }
     r
