@@ -7,20 +7,9 @@ import scala.collection.JavaConversions._
 
 object Solution {
   def solution(A: Array[Int]): Int = {
-    var d = 0
-    var B = A.toBuffer
-    def loop(j: Int): Unit= {
-      if (j < B.length) {
-        if (B.indexOf(B(j), j + 1) == -1) {
-          B = B.filterNot(_ == B(j))
-          d += 1
-          loop(0)
-        }
-        else loop(j+1)
-
-      }
-    }
-    loop(0)
-    d
+    A.foldLeft(Array[Int]())((distinctArr: Array[Int], a: Int) => {
+      if (distinctArr.indexOf(a) == -1) distinctArr :+ (a)
+      else distinctArr
+    }).size
   }
 }
