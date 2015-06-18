@@ -10,16 +10,23 @@ import scala.util.control._
 object Solution {
   def solution(A: Array[Int]): Int = {
 
-    val size = A.length
-    val loop = new Breaks;
-    var i = 1
-    loop.breakable {
-      for (a <- A) {
-        if (A.indexOf(i) == -1)
-          loop.break;
-        i += 1
-      }
+//    val size = A.length
+//    val loop = new Breaks;
+//    var i = 1
+//    loop.breakable {
+//      for (a <- A) {
+//        if (A.indexOf(i) == -1)
+//          loop.break;
+//        i += 1
+//      }
+//    }
+//    i
+
+    def loop (i: Int): Int = {
+      if (A.indexOf(i) == -1) i
+      else loop(i+1)
     }
-    i
+    loop(1)
+
   }
 }
