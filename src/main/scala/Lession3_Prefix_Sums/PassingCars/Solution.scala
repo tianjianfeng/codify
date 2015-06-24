@@ -6,32 +6,15 @@ package Lession3_Prefix_Sums.PassingCars
 object Solution {
   def solution(A: Array[Int]): Int = {
 
-    def loop(j: Int, arr: Array[Int], acc: Int): Int = {
+    def loop(j: Int, arr: Array[Int], acc: Int, oneCount: Int): Int = {
       if (acc > 1000000000) -1
       else if (j == A.size - 1 || j == 100000 - 1) acc
       else {
-        if (arr(0) == 0) loop(j + 1, arr.drop(1), acc + arr.count(_ == 1))
-        else loop(j + 1, arr.drop(1), acc)
+        if (arr(0) == 0) loop(j + 1, arr.tail, acc + oneCount, oneCount)
+        else loop(j + 1, arr.tail, acc, oneCount -1)
       }
     }
-    loop(0, A, 0)
+    loop(0, A, 0, A.count(_ == 1))
 
-
-
-    //    var sum = 0
-    //
-    //    def loop(B: Array[Int]): Int = {
-    //      if (sum > 1000000000) -1
-    //      else {
-    //        val i = B.indexOf(0)
-    //        if (i == -1) sum
-    //        else {
-    //          val subArr = B.drop(i + 1)
-    //          sum += subArr.count(_ == 1)
-    //          loop(subArr)
-    //        }
-    //      }
-    //    }
-    //    loop(A)
   }
 }
