@@ -8,6 +8,6 @@ import scala.collection.JavaConversions._
 object Solution {
   def solution(A: Array[Int]): Int = {
     // write your code in Scala 2.10
-    A.size - A.foldLeft(0)((acc, a) => if (a > A.indexOf(a) + 1) acc + 1 else acc)
+    A.foldLeft(0)((acc, a) => if (a <= A.indexOf(a) + 1) acc + 1 else acc)
   }
 }
