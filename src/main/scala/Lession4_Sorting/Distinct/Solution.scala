@@ -7,9 +7,15 @@ import scala.collection.JavaConversions._
 
 object Solution {
   def solution(A: Array[Int]): Int = {
-    A.foldLeft(Array[Int]())((distinctArr: Array[Int], a: Int) => {
-      if (distinctArr.indexOf(a) == -1) distinctArr :+ (a)
-      else distinctArr
-    }).size
+
+    def loop(a: Int, acc: Int): Int = {
+      if (a <= 1000000) {
+        if (A.indexOf(a) != -1) loop(a + 1, acc + 1)
+        else loop(a + 1, acc)
+      }
+      else acc
+    }
+
+    loop(-1000000, 0)
   }
 }
