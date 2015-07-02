@@ -11,5 +11,6 @@ class SolutionTest extends FlatSpec with Matchers {
     Solution.solution(Array(4,1,3,2)) should be (1)
     Solution.solution(Array(4,1,3)) should be (0)
     Solution.solution(Array(1,3)) should be (0)
+    Solution.solution(Array(1,1, 3)) should be (0)
   }
 }

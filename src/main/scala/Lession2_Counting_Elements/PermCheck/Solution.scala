@@ -10,7 +10,7 @@ object Solution {
     def loop(j: Int): Int = {
       if (j > A.size) 1
       else {
-        if (A.indexOf((j)) == -1) 0
+        if (A.indexOf((j)) == -1 || A.count(_ == j) > 1) 0
         else loop(j + 1)
       }
     }
