@@ -6,14 +6,13 @@ package Lession2_Counting_Elements.PermCheck
 object Solution {
 
   def solution(A: Array[Int]): Int = {
-
-    def loop(j: Int): Int = {
-      if (j > A.size) 1
-      else {
-        if (A.indexOf((j)) == -1 || A.count(_ == j) > 1) 0
-        else loop(j + 1)
-      }
+    val size = A.size
+    def loop(i: Int, acc: Int): Int = {
+      if (i <= size)
+        loop(i + 1, acc + i)
+      else acc
     }
-    loop(1)
+    val total = loop(1, 0)
+    if (total == A.distinct.sum) 1 else 0
   }
 }
