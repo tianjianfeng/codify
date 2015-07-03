@@ -6,12 +6,17 @@ package Lession2_Counting_Elements.FrogRiverOne
 object Solution {
   def solution(X: Int, A: Array[Int]): Int = {
 
-    def loop(j: Int, arr: Array[Int]): Array[Int] = {
-      if (j > X) arr
-      else loop(j + 1, arr.+:(A.indexOf(j)))
+    def loop(j: Int, max: Int): Int = {
+      if (j > X) max
+      else {
+        val index = A.indexOf(j)
+        if (index == -1) -1
+        else {
+          if (index > max) loop(j + 1, index)
+          else loop(j + 1, max)
+        }
+      }
     }
-    val steps = loop(1, Array[Int]())
-
-    if (steps.indexOf(-1) != -1) -1 else steps.max
+    loop(1, 0)
   }
 }
