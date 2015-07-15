@@ -8,7 +8,7 @@ object Solution {
 
     val size = A.size
     def loop(sum: Int, min: Int, i: Int): Int = {
-      if (i < size) {
+      if (i < size-1) {
         val t = sum + 2*A(i)
         if (Math.abs(t) < Math.abs(min)) loop(t, t, i+1)
         else loop(t, min, i+1)
